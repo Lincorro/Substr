@@ -16,35 +16,36 @@ bool substr(const char* a, const char* b)
     {
         if (*(a + i) == *(b + j)) 
         {
+            int ii = i;
+
             finde = true;
             while (finde && *(b+j)!='\0')
             {
-                if (*(a + i) != *(b + j)) {
+                if (*(a + ii) != *(b + j)) {
                     finde = false;
                 }
-                i++;
+                ii++;
                 j++;
             }
+            if (finde && *(b + j) == '\0')
+            {
+                return true;
+            }
             j = 0;
-
         }
-
         i++;
     }
 
-    if (finde)
-    {
-        return true;
-    }
-    else return false;
+
+    return false;
 
 }
 
 int main()
 {
     const char* a = "Hello world";
-    const char* b = "wor";
-    const char* c = "banana";
+    const char* b = "war";
+    const char* c = "Hel";
 
 
     cout << substr(a, b) << " " << substr(a, c);
